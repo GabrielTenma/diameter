@@ -14,7 +14,7 @@ export var getDateTime = "" + currentDate.getDate() + "/"
  * @param {message} error message
  * @returns json defaultRs
  */
-export function constructResponse(caller, status, message) {
+export function constructResponse(caller = 'unknown', status = 'success', message) {
     switch (status) {
         case 'success':
             log(caller, 'Response: OK');
@@ -25,7 +25,7 @@ export function constructResponse(caller, status, message) {
         case 'systemError':
             log(caller, 'Response error: ' + message);
             return new defaultRs('error', '99', message);
-    }
+    }   
 }
 
 /**
@@ -34,5 +34,9 @@ export function constructResponse(caller, status, message) {
  * @param {message} reason
  */
 export function log(appName, message) {
-    console.log('[%s] -- [%s] : %s', getDateTime, appName, message);
+    var state = '☑️';
+    if(message.includes('exception') || message.includes('error')){
+        state = '❌';
+    }
+    console.log('[%s][%s] -- [%s] : %s', state, getDateTime, appName, message);
 }

@@ -1,4 +1,4 @@
-import { getDateTime } from "../../utils/default.js";
+import { getDateTime } from "../../utils/base.js";
 
 export class defaultRs{
     constructor(status, code, message){

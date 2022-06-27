@@ -1,9 +1,1 @@
-{
-    "server": {
-        "host": "localhost",
-        "port": 4000
-    },
-    "app":{
-        "useBanner": false
-    }
-}
+{"server":{"host":"localhost","port":4000},"app":{"useBanner":false}}
