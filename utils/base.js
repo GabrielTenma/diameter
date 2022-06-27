@@ -35,7 +35,9 @@ export function constructResponse(caller = 'unknown', status = 'success', messag
  */
 export function log(appName, message) {
     var state = '☑️';
-    if(message.includes('exception') || message.includes('error')){
+    var errorList = ['error', 'failed', 'exceptions', 'exception'];
+
+    if (errorList.some(function(v) { return message.indexOf(v) >= 0; })) {
         state = '❌';
     }
     console.log('[%s][%s] -- [%s] : %s', state, getDateTime, appName, message);
