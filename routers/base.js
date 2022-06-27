@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import { getNotFound } from "../controller/defaultController.js";
 import { getConfig, getHealthInfo, writeConfig } from "../controller/sysinfoController.js";
 import * as utils from "../utils/base.js";
 
@@ -23,6 +24,12 @@ export function initRouters(app) {
     app.post('/config', jsonParser, (req, res) => {
         writeConfig(req, res);
     })
+
+    // 404 Route
+    app.get('*', function (req, res) {
+        getNotFound(req,res);
+    });
+
 
     utils.log(initRouters.name, 'Routers loaded');
 }
